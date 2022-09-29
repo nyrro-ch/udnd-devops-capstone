@@ -1,1 +1,13 @@
-<paste log output from Kubernetes-mediated prediction, here>
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/project-ml-python   1/1     1            1           9m14s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/project-ml-python-75466b69f   1         1         1       9m14s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   10m
+
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/project-ml-python-75466b69f-mbtpv   1/1     Running   0          9m14s
+Forwarding from 0.0.0.0:8000 -> 80
+Handling connection for 8000
