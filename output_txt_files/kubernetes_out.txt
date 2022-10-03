@@ -11,3 +11,12 @@ NAME                                    READY   STATUS    RESTARTS   AGE
 pod/project-ml-python-75466b69f-mbtpv   1/1     Running   0          9m14s
 Forwarding from 0.0.0.0:8000 -> 80
 Handling connection for 8000
+
+-------------------
+
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
