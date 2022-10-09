@@ -5,12 +5,12 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=nyrro/project-ml-python:latest
+dockerpath=nyrro/udnd-devops-capstone:latest
 
 # Step 2:  
 # Authenticate & tag
 docker login --username=nyrro
-docker tag project-ml-python $dockerpath
+docker tag udnd-devops-capstone $dockerpath
 echo "Docker ID and Image: $dockerpath"
 
 # Step 3:
