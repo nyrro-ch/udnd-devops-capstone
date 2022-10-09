@@ -57,12 +57,10 @@ jobs:
   create-cluster:
     docker:
       - image: 'cimg/python:3.10'
-    parameters:
-      cluster-name: udnd-capstone
-      config-file: cluster.yaml
     steps:
       - aws-eks/create-cluster:
           cluster-name: udnd-capstone
+          config-file: cluster.yaml
 
 workflows:
   default:
