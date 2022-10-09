@@ -8,6 +8,19 @@ This is a capstone project to showcase the use of CI/CD tools and aws cloud serv
 This projects runs a flask 'hello-world' app. Linting and building the docker file is configured in the circleci pipeline.
 There are scripts to create cluster, start and update kubernetes.
 
+## Screenshots
+### Rolling update
+![Rolling update](/rolling-update.png)
+
+### Failed linter
+![Failed lint](/screenshot1.png)
+
+### CircleCI pipeline
+![CircleCI pipeline](/screenshot2.png)
+
+### Cloudformation stacks
+![Cloudformation stacks](/screenshot3.png)
+
 ## Prerequistis
 - kubectl
 - aws-cli
