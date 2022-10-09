@@ -56,17 +56,18 @@ jobs:
 
   create-cluster:
     docker:
-      - image: 'cimg/python:3.10'
+      - image: amazon/aws-cli
     steps:
-      - aws-eks/create-cluster:
-          cluster-name: udnd-capstone
-          config-file: cluster.yaml
+      - run: |
+          curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+          sudo mv /tmp/eksctl /usr/local/bin
+          eksctl version
 
 workflows:
   default:
     jobs:
       - build-app
-      - build-push-docker:
-          requires: [build-app]
+      # - build-push-docker:
+      #     requires: [build-app]
       - create-cluster:
           requires: [build-push-docker]
