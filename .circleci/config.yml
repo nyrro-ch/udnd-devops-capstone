@@ -58,12 +58,16 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
+      - checkout
       - run: yum install -y gzip
       - run: yum install -y tar
       - run: |
           curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
           mv /tmp/eksctl /usr/local/bin
           eksctl version
+      - run: |
+          eksctl create cluster --config-file=./cluster.yaml
+          eksctl get cluster basic-cluster
 
 workflows:
   default:
