@@ -2,9 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
-version: 2
+version: 2.1
 jobs:
-  build:
+  build-app:
     docker:
       - image: python:3.7.3-stretch
     working_directory: ~/repo
@@ -53,6 +53,6 @@ jobs:
 workflows:
   default:
     jobs:
-      - build
+      - build-app
       - build-push-docker:
-          requires: [build]
+          requires: [build-app]
