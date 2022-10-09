@@ -54,7 +54,22 @@ jobs:
            docker tag udnd-devops-capstone nyrro/udnd-devops-capstone
            docker push nyrro/udnd-devops-capstone:latest
 
-  create-cluster:
+  # create-cluster:
+  #   docker:
+  #     - image: amazon/aws-cli
+  #   steps:
+  #     - checkout
+  #     - run: yum install -y gzip
+  #     - run: yum install -y tar
+  #     - run: |
+  #         curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+  #         mv /tmp/eksctl /usr/local/bin
+  #         eksctl version
+  #     - run: |
+  #         eksctl create cluster --config-file=./cluster.yaml
+  #         eksctl get cluster basic-cluster
+  #
+  deploy:
     docker:
       - image: amazon/aws-cli
     steps:
@@ -62,12 +77,12 @@ jobs:
       - run: yum install -y gzip
       - run: yum install -y tar
       - run: |
-          curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-          mv /tmp/eksctl /usr/local/bin
-          eksctl version
+          curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/linux/amd64/kubectl
+          chmod +x ./kubectl
       - run: |
-          eksctl create cluster --config-file=./cluster.yaml
-          eksctl get cluster basic-cluster
+          ./kubectl get nodes,pods
+
+
 
 workflows:
   default:
@@ -75,5 +90,6 @@ workflows:
       - build-app
       # - build-push-docker:
       #     requires: [build-app]
-      - create-cluster
+      # - create-cluster
           # requires: [build-push-docker]
+      - deploy
