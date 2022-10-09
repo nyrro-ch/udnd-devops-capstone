@@ -48,7 +48,7 @@ jobs:
 
       # deploy the image
       - run: |
-           docker push tag udnd-devops-capstone nyrro/udnd-devops-capstone:latest
+           docker push nyrro/udnd-devops-capstone:latest
 
 workflows:
   default:
