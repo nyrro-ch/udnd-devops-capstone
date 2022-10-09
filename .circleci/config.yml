@@ -90,7 +90,7 @@ workflows:
       - build-app
       # - build-push-docker:
       #     requires: [build-app]
-      - create-cluster
+      - create-cluster:
           requires: [build-push-docker]
-      - deploy
+      - deploy:
           requires: [create-cluster]
