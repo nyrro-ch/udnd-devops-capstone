@@ -69,5 +69,5 @@ workflows:
       - build-app
       # - build-push-docker:
       #     requires: [build-app]
-      - create-cluster:
-          requires: [build-push-docker]
+      - create-cluster
+          # requires: [build-push-docker]
